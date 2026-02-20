@@ -51,19 +51,15 @@ _LOGGER = logging.getLogger(__name__)
 
 
 async def _test_connection(host: str, port: int) -> bool:
-    """Teste la connexion TCP vers l'ESP32."""
+    """Teste uniquement que le port TCP est joignable (sans attendre réponse du poêle)."""
     try:
-        trame = f"{TRAME_START}{CMD_STATUS}{TRAME_END}"
         reader, writer = await asyncio.wait_for(
             asyncio.open_connection(host, port),
             timeout=TCP_TIMEOUT,
         )
-        writer.write(trame.encode())
-        await writer.drain()
-        data = await asyncio.wait_for(reader.read(10), timeout=TCP_TIMEOUT)
         writer.close()
         await writer.wait_closed()
-        return len(data) > 0
+        return True
     except Exception:
         return False
 
