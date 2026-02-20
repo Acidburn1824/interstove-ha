@@ -1,0 +1,77 @@
+{
+  "title": "Poêle à Pellets Interstove",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connexion à l'ESP32",
+        "description": "Entrez l'adresse IP et le port de votre ESP32 (ESP-Link ou ESPHome).",
+        "data": {
+          "host": "Adresse IP de l'ESP32",
+          "port": "Port TCP",
+          "bridge_type": "Type de bridge",
+          "scan_interval": "Intervalle de mise à jour (secondes)"
+        }
+      },
+      "temperature": {
+        "title": "Source de température",
+        "description": "Choisissez la source de température pour la régulation.",
+        "data": {
+          "temp_source": "Source de température"
+        }
+      },
+      "zigbee": {
+        "title": "Sonde Zigbee",
+        "description": "Entrez l'entité Home Assistant de votre sonde de température Zigbee (ex: sensor.sonde_salon_temperature).",
+        "data": {
+          "temp_entity": "Entité sonde température"
+        }
+      },
+      "regulation": {
+        "title": "Paramètres de régulation",
+        "description": "Configurez la régulation automatique de la puissance.",
+        "data": {
+          "puissance_min": "Puissance minimale (1-5)",
+          "puissance_max": "Puissance maximale (1-5)",
+          "hysteresis": "Hystérésis (°C)",
+          "delai_rallumage": "Délai de sécurité avant rallumage (secondes)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de se connecter à l'ESP32. Vérifiez l'adresse IP et le port.",
+      "entity_not_found": "Entité introuvable dans Home Assistant."
+    },
+    "abort": {
+      "already_configured": "Ce poêle est déjà configuré."
+    }
+  },
+  "entity": {
+    "climate": {
+      "interstove": {
+        "state": {
+          "off": "Éteint",
+          "heat": "Chauffe"
+        },
+        "state_attributes": {
+          "hvac_action": {
+            "state": {
+              "off": "Éteint",
+              "heating": "En chauffe",
+              "preheating": "Allumage en cours",
+              "cooling": "Refroidissement"
+            }
+          },
+          "fan_mode": {
+            "state": {
+              "1": "Puissance 1",
+              "2": "Puissance 2",
+              "3": "Puissance 3",
+              "4": "Puissance 4",
+              "5": "Puissance 5"
+            }
+          }
+        }
+      }
+    }
+  }
+}

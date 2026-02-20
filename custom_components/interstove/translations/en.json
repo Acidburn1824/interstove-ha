@@ -1,0 +1,77 @@
+{
+  "title": "Interstove Pellet Stove",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to ESP32",
+        "description": "Enter the IP address and port of your ESP32 (ESP-Link or ESPHome).",
+        "data": {
+          "host": "ESP32 IP Address",
+          "port": "TCP Port",
+          "bridge_type": "Bridge type",
+          "scan_interval": "Update interval (seconds)"
+        }
+      },
+      "temperature": {
+        "title": "Temperature source",
+        "description": "Choose the temperature source for regulation.",
+        "data": {
+          "temp_source": "Temperature source"
+        }
+      },
+      "zigbee": {
+        "title": "Zigbee sensor",
+        "description": "Enter the Home Assistant entity of your Zigbee temperature sensor (e.g. sensor.living_room_temperature).",
+        "data": {
+          "temp_entity": "Temperature sensor entity"
+        }
+      },
+      "regulation": {
+        "title": "Regulation settings",
+        "description": "Configure automatic power regulation.",
+        "data": {
+          "puissance_min": "Minimum power (1-5)",
+          "puissance_max": "Maximum power (1-5)",
+          "hysteresis": "Hysteresis (°C)",
+          "delai_rallumage": "Safety delay before re-ignition (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to the ESP32. Please check the IP address and port.",
+      "entity_not_found": "Entity not found in Home Assistant."
+    },
+    "abort": {
+      "already_configured": "This stove is already configured."
+    }
+  },
+  "entity": {
+    "climate": {
+      "interstove": {
+        "state": {
+          "off": "Off",
+          "heat": "Heating"
+        },
+        "state_attributes": {
+          "hvac_action": {
+            "state": {
+              "off": "Off",
+              "heating": "Heating",
+              "preheating": "Igniting",
+              "cooling": "Cooling down"
+            }
+          },
+          "fan_mode": {
+            "state": {
+              "1": "Power 1",
+              "2": "Power 2",
+              "3": "Power 3",
+              "4": "Power 4",
+              "5": "Power 5"
+            }
+          }
+        }
+      }
+    }
+  }
+}

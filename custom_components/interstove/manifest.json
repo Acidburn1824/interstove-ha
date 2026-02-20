@@ -1,0 +1,12 @@
+{
+  "domain": "interstove",
+  "name": "Interstove Pellet Stove",
+  "version": "1.0.0",
+  "config_flow": true,
+  "documentation": "https://github.com/ton-github/interstove-ha",
+  "issue_tracker": "https://github.com/ton-github/interstove-ha/issues",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": ["@ton-github"],
+  "iot_class": "local_polling"
+}

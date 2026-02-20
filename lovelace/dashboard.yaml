@@ -1,0 +1,73 @@
+title: Poêle à Pellets
+views:
+  - title: Poêle
+    icon: mdi:fire
+    cards:
+      # ─── Thermostat principal ───
+      - type: thermostat
+        entity: climate.poele_pellets
+        name: Poêle à Pellets
+
+      # ─── État et infos ───
+      - type: entities
+        title: État du poêle
+        entities:
+          - entity: climate.poele_pellets
+            name: État
+          - entity: climate.poele_pellets
+            type: attribute
+            attribute: etat_poele
+            name: Code état
+            icon: mdi:information-outline
+          - entity: climate.poele_pellets
+            type: attribute
+            attribute: puissance
+            name: Puissance actuelle
+            icon: mdi:fire-circle
+          - entity: climate.poele_pellets
+            type: attribute
+            attribute: heure_extinction
+            name: Dernière extinction
+            icon: mdi:clock-outline
+
+      # ─── Contrôle puissance ───
+      - type: entities
+        title: Contrôle puissance
+        entities:
+          - entity: climate.poele_pellets
+            name: Mode puissance
+            type: attribute
+            attribute: fan_mode
+            icon: mdi:speedometer
+
+      # ─── Graphique température ───
+      - type: history-graph
+        title: Températures
+        hours_to_show: 24
+        entities:
+          - entity: climate.poele_pellets
+            attribute: current_temperature
+            name: Température ambiante
+          - entity: climate.poele_pellets
+            attribute: temperature
+            name: Consigne
+
+      # ─── Boutons rapides ───
+      - type: horizontal-stack
+        cards:
+          - type: button
+            name: Allumer
+            icon: mdi:fire
+            tap_action:
+              action: call-service
+              service: climate.turn_on
+              service_data:
+                entity_id: climate.poele_pellets
+          - type: button
+            name: Éteindre
+            icon: mdi:power
+            tap_action:
+              action: call-service
+              service: climate.turn_off
+              service_data:
+                entity_id: climate.poele_pellets
