@@ -64,7 +64,7 @@ TRAME_START = "\x1b"   # ESC
 TRAME_END   = "&"
 
 # Commandes
-CMD_STATUS      = "RDA909005f"   # Lecture statut
+CMD_STATUS      = "RD90005f"   # Lecture statut
 CMD_TEMPERATURE = "RD100057"     # Lecture température ambiante
 CMD_ALLUMAGE    = "RF001059"     # Allumage
 CMD_EXTINCTION  = "RF000058"     # Extinction
